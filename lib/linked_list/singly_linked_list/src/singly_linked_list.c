@@ -1,7 +1,5 @@
 #include "singly_linked_list.h"
 
-// --- Function Implementations for Singly Linked List ---
-
 /**
  * @brief Creates a new node.
  * @param data The data to store in the new node.
