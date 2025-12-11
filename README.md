@@ -1,11 +1,4 @@
-# start
-
-```shell
-find src/ test/ -name "*.c" -o -name "*.h" | xargs clang-format -i
-gcc -O3 -Wall -Wextra -Werror -pedantic -std=c99 main.c -o main && ./main
-```
-
-# NASA’s 10 rules for developing safety-critical code are:
+# 10 rules for developing safety-critical code are:
 
 * Restrict all code to very simple control flow constructs—do not use goto statements, setjmp or longjmp constructs, or direct or indirect recursion.
 * Give all loops a fixed upper bound.
