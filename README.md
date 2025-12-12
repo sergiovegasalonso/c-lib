@@ -1,3 +1,8 @@
+# Pending tasks
+
+- Improve tests setting my standard
+- Review singly linked tests implementation
+
 # 10 rules for developing safety-critical code are:
 
 * Restrict all code to very simple control flow constructs—do not use goto statements, setjmp or longjmp constructs, or direct or indirect recursion.
