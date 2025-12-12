@@ -8,9 +8,10 @@
  * @struct Node
  * @brief Represents a node in a singly linked list.
  */
-typedef struct Node {
-  int data;
-  struct Node *next;
+typedef struct Node
+{
+    int data;
+    struct Node *next;
 } Node;
 
 /**
@@ -74,4 +75,4 @@ void delete_node_by_key(Node **head_ref, int key);
  */
 void print_list(Node *node);
 
-#endif // SINGLY_LINKED_LIST_H
+#endif  // SINGLY_LINKED_LIST_H
