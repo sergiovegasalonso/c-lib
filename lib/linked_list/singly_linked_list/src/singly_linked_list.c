@@ -123,7 +123,10 @@ void delete_from_beginning(Node **head_ref)
  */
 void delete_from_end(Node **head_ref)
 {
-    if (*head_ref == NULL) return;
+    if (*head_ref == NULL)
+    {
+        return;
+    }
 
     if ((*head_ref)->next == NULL)
     {
