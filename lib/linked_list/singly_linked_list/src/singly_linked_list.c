@@ -8,13 +8,16 @@
 Node *create_node(int data)
 {
     Node *new_node = (Node *)malloc(sizeof(Node));
+
     if (new_node == NULL)
     {
         perror("Unable to allocate memory for new node");
         exit(EXIT_FAILURE);
     }
+
     new_node->data = data;
     new_node->next = NULL;
+
     return new_node;
 }
 
@@ -26,6 +29,7 @@ Node *create_node(int data)
 void insert_at_beginning(Node **head_ref, int new_data)
 {
     Node *new_node = create_node(new_data);
+
     new_node->next = *head_ref;
     *head_ref = new_node;
 }
@@ -38,16 +42,20 @@ void insert_at_beginning(Node **head_ref, int new_data)
 void insert_at_end(Node **head_ref, int new_data)
 {
     Node *new_node = create_node(new_data);
+
     if (*head_ref == NULL)
     {
         *head_ref = new_node;
         return;
     }
+
     Node *last = *head_ref;
+
     while (last->next != NULL)
     {
         last = last->next;
     }
+
     last->next = new_node;
 }
 
@@ -84,7 +92,7 @@ void insert_at_position(Node **head_ref, int new_data, int position)
     if (temp == NULL)
     {
         fprintf(stderr, "Position out of bounds.\n");
-        free(new_node);  // Clean up the allocated node
+        free(new_node);
         return;
     }
 
@@ -100,9 +108,11 @@ void delete_from_beginning(Node **head_ref)
 {
     if (*head_ref == NULL)
     {
-        return;  // List is empty
+        return;
     }
+
     Node *temp = *head_ref;
+
     *head_ref = (*head_ref)->next;
     free(temp);
 }
@@ -113,22 +123,22 @@ void delete_from_beginning(Node **head_ref)
  */
 void delete_from_end(Node **head_ref)
 {
-    if (*head_ref == NULL)
-    {
-        return;  // List is empty
-    }
-    // If there is only one node
+    if (*head_ref == NULL) return;
+
     if ((*head_ref)->next == NULL)
     {
         free(*head_ref);
         *head_ref = NULL;
         return;
     }
+
     Node *second_last = *head_ref;
+
     while (second_last->next->next != NULL)
     {
         second_last = second_last->next;
     }
+
     free(second_last->next);
     second_last->next = NULL;
 }
@@ -154,35 +164,28 @@ void delete_node_by_position(Node **head_ref, int position)
 
     Node *temp = *head_ref;
 
-    // If head needs to be removed
     if (position == 0)
     {
-        *head_ref = temp->next;  // Change head
-        free(temp);              // free old head
+        *head_ref = temp->next;
+        free(temp);
         return;
     }
 
-    // Find previous node of the node to be deleted
     for (int i = 0; temp != NULL && i < position - 1; i++)
     {
         temp = temp->next;
     }
 
-    // If position is more than number of nodes
     if (temp == NULL || temp->next == NULL)
     {
         fprintf(stderr, "Position out of bounds.\n");
         return;
     }
 
-    // Node temp->next is the node to be deleted
-    // Store pointer to the next of node to be deleted
     Node *next_node = temp->next->next;
 
-    // Unlink the node from linked list
-    free(temp->next);  // Free memory
-
-    temp->next = next_node;  // Unlink the deleted node from list
+    free(temp->next);
+    temp->next = next_node;
 }
 
 /**
@@ -195,7 +198,6 @@ void delete_node_by_key(Node **head_ref, int key)
     Node *temp = *head_ref;
     Node *prev = NULL;
 
-    // If head node itself holds the key to be deleted
     if (temp != NULL && temp->data == key)
     {
         *head_ref = temp->next;
@@ -203,17 +205,14 @@ void delete_node_by_key(Node **head_ref, int key)
         return;
     }
 
-    // Search for the key to be deleted, keep track of the previous node
     while (temp != NULL && temp->data != key)
     {
         prev = temp;
         temp = temp->next;
     }
 
-    // If key was not present in linked list
     if (temp == NULL) return;
 
-    // Unlink the node from linked list
     prev->next = temp->next;
     free(temp);
 }
@@ -229,5 +228,6 @@ void print_list(Node *node)
         printf("%d -> ", node->data);
         node = node->next;
     }
+
     printf("NULL\n");
 }
