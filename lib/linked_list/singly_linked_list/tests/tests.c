@@ -8,12 +8,14 @@ void test_create_node()
 {
     printf("Testing create_node...");
 
-    Node *node = create_node(10);
+    int data = 10;
+    Node *node = create_node(&data, sizeof(int));
 
     assert(node != NULL);
-    assert(node->data == 10);
+    assert(*(int *)node->data == 10);
     assert(node->next == NULL);
 
+    free(node->data);
     free(node);
 
     printf("PASSED\n");
@@ -25,15 +27,17 @@ void test_insert_at_beginning()
 
     Node *head = NULL;
 
-    insert_at_beginning(&head, 10);
+    int data1 = 10;
+    insert_at_beginning(&head, &data1, sizeof(int));
 
     assert(head != NULL);
-    assert(head->data == 10);
+    assert(*(int *)head->data == 10);
 
-    insert_at_beginning(&head, 20);
+    int data2 = 20;
+    insert_at_beginning(&head, &data2, sizeof(int));
 
-    assert(head->data == 20);
-    assert(head->next->data == 10);
+    assert(*(int *)head->data == 20);
+    assert(*(int *)head->next->data == 10);
     assert(head->next->next == NULL);
 
     delete_from_end(&head);
@@ -48,15 +52,17 @@ void test_insert_at_end()
 
     Node *head = NULL;
 
-    insert_at_end(&head, 10);
+    int data1 = 10;
+    insert_at_end(&head, &data1, sizeof(int));
 
     assert(head != NULL);
-    assert(head->data == 10);
+    assert(*(int *)head->data == 10);
 
-    insert_at_end(&head, 20);
+    int data2 = 20;
+    insert_at_end(&head, &data2, sizeof(int));
 
     assert(head->next != NULL);
-    assert(head->next->data == 20);
+    assert(*(int *)head->next->data == 20);
     assert(head->next->next == NULL);
 
     delete_from_end(&head);
@@ -71,17 +77,22 @@ void test_insert_at_position()
 
     Node *head = NULL;
 
-    insert_at_end(&head, 10);
-    insert_at_end(&head, 30);
-    insert_at_position(&head, 20, 1);
+    int data1 = 10;
+    insert_at_end(&head, &data1, sizeof(int));
+    int data2 = 30;
+    insert_at_end(&head, &data2, sizeof(int));
+    int data3 = 20;
+    insert_at_position(&head, &data3, sizeof(int), 1);
 
-    assert(head->next->data == 20);
+    assert(*(int *)head->next->data == 20);
 
-    insert_at_position(&head, 5, 0);
+    int data4 = 5;
+    insert_at_position(&head, &data4, sizeof(int), 0);
 
-    assert(head->data == 5);
+    assert(*(int *)head->data == 5);
 
-    insert_at_position(&head, 40, 4);
+    int data5 = 40;
+    insert_at_position(&head, &data5, sizeof(int), 4);
 
     Node *temp = head;
 
@@ -90,7 +101,7 @@ void test_insert_at_position()
         temp = temp->next;
     }
 
-    assert(temp->data == 40);
+    assert(*(int *)temp->data == 40);
 
     while (head != NULL)
     {
@@ -106,12 +117,14 @@ void test_delete_from_beginning()
 
     Node *head = NULL;
 
-    insert_at_end(&head, 10);
-    insert_at_end(&head, 20);
+    int data1 = 10;
+    insert_at_end(&head, &data1, sizeof(int));
+    int data2 = 20;
+    insert_at_end(&head, &data2, sizeof(int));
     delete_from_beginning(&head);
 
     assert(head != NULL);
-    assert(head->data == 20);
+    assert(*(int *)head->data == 20);
 
     delete_from_beginning(&head);
 
@@ -126,13 +139,15 @@ void test_delete_from_end()
 
     Node *head = NULL;
 
-    insert_at_end(&head, 10);
-    insert_at_end(&head, 20);
+    int data1 = 10;
+    insert_at_end(&head, &data1, sizeof(int));
+    int data2 = 20;
+    insert_at_end(&head, &data2, sizeof(int));
     delete_from_end(&head);
 
     assert(head != NULL);
     assert(head->next == NULL);
-    assert(head->data == 10);
+    assert(*(int *)head->data == 10);
 
     delete_from_end(&head);
 
@@ -147,21 +162,25 @@ void test_delete_node_by_position()
 
     Node *head = NULL;
 
-    insert_at_end(&head, 10);
-    insert_at_end(&head, 20);
-    insert_at_end(&head, 30);
-    insert_at_end(&head, 40);
+    int data1 = 10;
+    insert_at_end(&head, &data1, sizeof(int));
+    int data2 = 20;
+    insert_at_end(&head, &data2, sizeof(int));
+    int data3 = 30;
+    insert_at_end(&head, &data3, sizeof(int));
+    int data4 = 40;
+    insert_at_end(&head, &data4, sizeof(int));
     delete_node_by_position(&head, 2);
 
-    assert(head->next->next->data == 40);
+    assert(*(int *)head->next->next->data == 40);
 
     delete_node_by_position(&head, 0);
 
-    assert(head->data == 20);
+    assert(*(int *)head->data == 20);
 
     delete_node_by_position(&head, 1);
 
-    assert(head->data == 20);
+    assert(*(int *)head->data == 20);
     assert(head->next == NULL);
 
     delete_from_beginning(&head);
@@ -171,26 +190,36 @@ void test_delete_node_by_position()
     printf("PASSED\n");
 }
 
+int compare_int(void *a, void *b) { return (*(int *)a - *(int *)b); }
+
 void test_delete_node_by_key()
 {
     printf("Testing delete_node_by_key...");
 
     Node *head = NULL;
-    insert_at_end(&head, 10);
-    insert_at_end(&head, 20);
-    insert_at_end(&head, 30);
-    insert_at_end(&head, 40);
-    delete_node_by_key(&head, 30);
+    int data1 = 10;
+    insert_at_end(&head, &data1, sizeof(int));
+    int data2 = 20;
+    insert_at_end(&head, &data2, sizeof(int));
+    int data3 = 30;
+    insert_at_end(&head, &data3, sizeof(int));
+    int data4 = 40;
+    insert_at_end(&head, &data4, sizeof(int));
 
-    assert(head->next->next->data == 40);
+    int key1 = 30;
+    delete_node_by_key(&head, &key1, compare_int);
 
-    delete_node_by_key(&head, 10);
+    assert(*(int *)head->next->next->data == 40);
 
-    assert(head->data == 20);
+    int key2 = 10;
+    delete_node_by_key(&head, &key2, compare_int);
 
-    delete_node_by_key(&head, 40);
+    assert(*(int *)head->data == 20);
 
-    assert(head->data == 20);
+    int key3 = 40;
+    delete_node_by_key(&head, &key3, compare_int);
+
+    assert(*(int *)head->data == 20);
     assert(head->next == NULL);
 
     delete_from_beginning(&head);
