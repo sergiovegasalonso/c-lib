@@ -1,8 +1,7 @@
 # Pending tasks
 
 - Refactor singly linked list main.c
-- Divide tests in int, float and Person
-- Review singly linked tests implementation
+- Divide singly linked list tests in int, float and Person
 
 # 10 rules for developing safety-critical code are:
 
