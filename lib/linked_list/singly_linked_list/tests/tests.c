@@ -6,7 +6,7 @@
 
 void test_create_node()
 {
-    printf("Testing create_node...");
+    printf("Singly linked list: testing create_node...");
 
     int data = 10;
     Node *node = create_node(&data, sizeof(int));
@@ -18,12 +18,12 @@ void test_create_node()
     free(node->data);
     free(node);
 
-    printf("PASSED\n");
+    printf("PASSED ✓\n");
 }
 
 void test_insert_at_beginning()
 {
-    printf("Testing insert_at_beginning...");
+    printf("Singly linked list: testing insert_at_beginning...");
 
     Node *head = NULL;
 
@@ -43,12 +43,12 @@ void test_insert_at_beginning()
     delete_from_end(&head);
     delete_from_end(&head);
 
-    printf("PASSED\n");
+    printf("PASSED ✓\n");
 }
 
 void test_insert_at_end()
 {
-    printf("Testing insert_at_end...");
+    printf("Singly linked list: testing insert_at_end...");
 
     Node *head = NULL;
 
@@ -68,12 +68,12 @@ void test_insert_at_end()
     delete_from_end(&head);
     delete_from_end(&head);
 
-    printf("PASSED\n");
+    printf("PASSED ✓\n");
 }
 
 void test_insert_at_position()
 {
-    printf("Testing insert_at_position...");
+    printf("Singly linked list: testing insert_at_position...");
 
     Node *head = NULL;
 
@@ -108,12 +108,12 @@ void test_insert_at_position()
         delete_from_beginning(&head);
     }
 
-    printf("PASSED\n");
+    printf("PASSED ✓\n");
 }
 
 void test_delete_from_beginning()
 {
-    printf("Testing delete_from_beginning...");
+    printf("Singly linked list: testing delete_from_beginning...");
 
     Node *head = NULL;
 
@@ -130,12 +130,12 @@ void test_delete_from_beginning()
 
     assert(head == NULL);
 
-    printf("PASSED\n");
+    printf("PASSED ✓\n");
 }
 
 void test_delete_from_end()
 {
-    printf("Testing delete_from_end...");
+    printf("Singly linked list: testing delete_from_end...");
 
     Node *head = NULL;
 
@@ -153,12 +153,12 @@ void test_delete_from_end()
 
     assert(head == NULL);
 
-    printf("PASSED\n");
+    printf("PASSED ✓\n");
 }
 
 void test_delete_node_by_position()
 {
-    printf("Testing delete_node_by_position...");
+    printf("Singly linked list: testing delete_node_by_position...");
 
     Node *head = NULL;
 
@@ -187,14 +187,14 @@ void test_delete_node_by_position()
 
     assert(head == NULL);
 
-    printf("PASSED\n");
+    printf("PASSED ✓\n");
 }
 
 int compare_int(void *a, void *b) { return (*(int *)a - *(int *)b); }
 
 void test_delete_node_by_key()
 {
-    printf("Testing delete_node_by_key...");
+    printf("Singly linked list: testing delete_node_by_key...");
 
     Node *head = NULL;
     int data1 = 10;
@@ -226,13 +226,11 @@ void test_delete_node_by_key()
 
     assert(head == NULL);
 
-    printf("PASSED\n");
+    printf("PASSED ✓\n");
 }
 
 int main()
 {
-    printf("Running Singly Linked List Tests...\n");
-
     test_create_node();
     test_insert_at_beginning();
     test_insert_at_end();
@@ -241,8 +239,6 @@ int main()
     test_delete_from_end();
     test_delete_node_by_position();
     test_delete_node_by_key();
-
-    printf("All tests passed successfully!\n");
 
     return 0;
 }
