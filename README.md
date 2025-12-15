@@ -1,6 +1,6 @@
 # Pending tasks
 
-- Improve tests setting my standard
+- Divide tests in int, float and Person
 - Review singly linked tests implementation
 
 # 10 rules for developing safety-critical code are:
