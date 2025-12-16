@@ -28,7 +28,8 @@ Node *create_node(void *data, size_t data_size);
  * @param new_data The data for the new node.
  * @param data_size The size of the data to be stored.
  */
-void insert_at_beginning(Node **head_ref, void *new_data, size_t data_size);
+void insert_node_at_beginning(Node **head_ref, void *new_data,
+                              size_t data_size);
 
 /**
  * @brief Inserts a new node at the end of the list.
@@ -36,7 +37,7 @@ void insert_at_beginning(Node **head_ref, void *new_data, size_t data_size);
  * @param new_data The data for the new node.
  * @param data_size The size of the data to be stored.
  */
-void insert_at_end(Node **head_ref, void *new_data, size_t data_size);
+void insert_node_at_end(Node **head_ref, void *new_data, size_t data_size);
 
 /**
  * @brief Inserts a new node at a specific position in the list.
@@ -45,20 +46,20 @@ void insert_at_end(Node **head_ref, void *new_data, size_t data_size);
  * @param data_size The size of the data to be stored.
  * @param position The 0-indexed position to insert the node at.
  */
-void insert_at_position(Node **head_ref, void *new_data, size_t data_size,
-                        int position);
+void insert_node_at_position(Node **head_ref, void *new_data, size_t data_size,
+                             int position);
 
 /**
  * @brief Deletes a node from the beginning of the list.
  * @param head_ref A pointer to the head of the list.
  */
-void delete_from_beginning(Node **head_ref);
+void delete_node_from_beginning(Node **head_ref);
 
 /**
  * @brief Deletes a node from the end of the list.
  * @param head_ref A pointer to the head of the list.
  */
-void delete_from_end(Node **head_ref);
+void delete_node_from_end(Node **head_ref);
 
 /**
  * @brief Deletes a node at a specific position in the list.
