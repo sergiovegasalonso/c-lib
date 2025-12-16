@@ -1,5 +1,7 @@
 # Pending tasks
 
+- Debug configuration for vscode
+- Check comparator functions
 - Refactor singly linked list main.c
 - Exhaust tests
 
