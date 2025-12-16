@@ -4,26 +4,41 @@
 
 #include "singly_linked_list/src/singly_linked_list.h"
 
-// Example usage with integers
-void print_int(void *data) { printf("%d", *(int *)data); }
+// Integer helper functions
+void print_int(void *data)
+{
+    printf("%d", *(int *)data);
+}
 
-int compare_int(void *a, void *b) { return (*(int *)a - *(int *)b); }
+int compare_int(void *a, void *b)
+{
+    return (*(int *)a - *(int *)b);
+}
 
-// Example usage with floats
-void print_float(void *data) { printf("%f", *(float *)data); }
+// Float helper functions
+void print_float(void *data)
+{
+    printf("%f", *(float *)data);
+}
 
-// Example usage with strings
-void print_string(void *data) { printf("%s", (char *)data); }
+// String helper functions
+void print_string(void *data)
+{
+    printf("%s", (char *)data);
+}
 
-int compare_string(void *a, void *b) { return strcmp((char *)a, (char *)b); }
+int compare_string(void *a, void *b)
+{
+    return strcmp((char *)a, (char *)b);
+}
 
-// Example usage with a custom struct
 typedef struct
 {
     int id;
     char *name;
 } Person;
 
+// Person helper functions
 void print_person(void *data)
 {
     Person *p = (Person *)data;
@@ -32,8 +47,9 @@ void print_person(void *data)
 
 int main()
 {
-    // --- Integer List Example ---
-    printf("--- Integer List ---\n");
+    printf("\n");
+    printf("Integer singly linked list\n");
+    printf("==========================\n");
     Node *int_head = NULL;
     int int_val1 = 10, int_val2 = 20, int_val3 = 30;
 
@@ -52,8 +68,8 @@ int main()
     print_list(int_head, print_int);
     printf("\n");
 
-    // --- Float List Example ---
-    printf("--- Float List ---\n");
+    printf("Float singly linked list\n");
+    printf("========================\n");
     Node *float_head = NULL;
     float float_val1 = 1.1f, float_val2 = 2.2f, float_val3 = 3.3f;
 
@@ -65,8 +81,8 @@ int main()
     print_list(float_head, print_float);
     printf("\n");
 
-    // --- String List Example ---
-    printf("--- String List ---\n");
+    printf("String singly linked list\n");
+    printf("=========================\n");
     Node *string_head = NULL;
     char *str1 = "Hello";
     char *str2 = "World";
@@ -87,8 +103,8 @@ int main()
     print_list(string_head, print_string);
     printf("\n");
 
-    // --- Person (Struct) List Example ---
-    printf("--- Person (Struct) List ---\n");
+    printf("Person (struct) singly linked list\n");
+    printf("==================================\n");
     Node *person_head = NULL;
     Person p1 = {1, "Alice"};
     Person p2 = {2, "Bob"};
