@@ -1,5 +1,6 @@
 # Pending tasks
 
+- add mpc if exists and copilot agents
 - Debug configuration for vscode
 - Check comparator functions
 - Refactor singly linked list main.c
