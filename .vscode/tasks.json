@@ -1,0 +1,44 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build tests",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "lib/linked_list/singly_linked_list/tests/tests.c",
+                "lib/linked_list/singly_linked_list/src/singly_linked_list.c",
+                "lib/helpers/helpers.c",
+                "-o",
+                "debug/tests"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Builds the tests executable."
+        },
+        {
+            "label": "build main",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "lib/linked_list/main.c",
+                "lib/linked_list/singly_linked_list/src/singly_linked_list.c",
+                "lib/helpers/helpers.c",
+                "-o",
+                "debug/main"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Builds the main executable."
+        }
+    ]
+}
