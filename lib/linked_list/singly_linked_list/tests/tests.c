@@ -960,7 +960,7 @@ void test_delete_person_by_key()
     assert(strcmp(retrieved_person->name, "David") == 0);
 
     Person key2 = {1, "Alice"};
-    delete_node_by_key(&head, &key2, compare_ints);
+    delete_node_by_key(&head, &key2, compare_persons);
 
     retrieved_person = (Person *)head->data;
     assert(retrieved_person->id == 2);
