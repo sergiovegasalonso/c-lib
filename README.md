@@ -1,5 +1,6 @@
 # Pending tasks
 
+- code wars restructure and main called from ./run
 - memory study
 - Exhaust tests
 - cmake and makefile
