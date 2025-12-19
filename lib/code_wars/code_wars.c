@@ -1,3 +1,5 @@
+#include "code_wars.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
